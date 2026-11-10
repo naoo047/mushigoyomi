@@ -78,7 +78,7 @@
     ? "<p>国の資料に書かれた全国についての時期を、そのまま示しています。地域の気温ではずらしていません。</p>"
       + "<p>虫の出る時期は、その年の天候や周りの環境で変わります。目安として使い、実際の様子もあわせて確かめてください。</p>"
     : DATA.method.map((t) => `<p>${esc(t)}</p>`).join("")
-    + `<p>この虫の時期の出発点は、${esc(DATA.ref_station)}の資料の値です。</p>`
+    + `<p>${esc(DATA.ref_text || "この虫の時期の出発点は、" + DATA.ref_station + "の資料の値です。")}</p>`
     + (!ALLFIXED && DATA.phases.some((p) => p.fixed) ? `<p>「全国」と付いた時期は、気温でずらすと資料と合わなくなるため、地域でずらさずに資料の値をそのまま使っています。</p>` : "");
   $("sources").innerHTML = DATA.sources.map((s) => `<li>${esc(s.publisher)}「${esc(s.title)}」 <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a></li>`).join("");
 
